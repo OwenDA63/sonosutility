@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonos Utility — Redirecting</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #fafafa;
+      color: #333;
+      padding: 24px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+    h1 { font-size: 22px; margin-bottom: 12px; }
+    p { font-size: 15px; color: #666; line-height: 1.5; margin-bottom: 20px; }
+    .status { font-size: 14px; color: #999; }
+    .success { color: #2a7; }
+    .error { color: #c44; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Sonos Utility</h1>
+    <p id="message">Completing authentication...</p>
+    <p class="status" id="status"></p>
+  </div>
+
+  <script>
+    // If the app handled the deep link, this page never loads.
+    // If it does load, that means either:
+    //   1. The app isn't installed
+    //   2. The user opened this on a desktop browser
+    //   3. Universal Links / App Links didn't fire
+
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const error = params.get('error');
+
+    const messageEl = document.getElementById('message');
+    const statusEl = document.getElementById('status');
+
+    if (error) {
+      messageEl.textContent = 'Authentication failed.';
+      statusEl.textContent = 'Error: ' + error;
+      statusEl.className = 'status error';
+    } else if (code) {
+      messageEl.textContent =
+        'Authentication successful! If the app didn\'t open automatically, ' +
+        'go back to the Sonos Utility app to complete setup.';
+      statusEl.textContent = 'Authorization code received.';
+      statusEl.className = 'status success';
+    } else {
+      messageEl.textContent = 'No authorization data found.';
+      statusEl.textContent = 'Try connecting again from the app.';
+    }
+  </script>
+</body>
+</html>
