@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.owenda63.sonosutility",
+      "package_name": "com.mysonosproject",
       "sha256_cert_fingerprints": [
         "0D:EF:40:10:EC:58:12:E7:C3:DB:5E:F6:69:BC:78:49:47:2B:3B:D0:31:7C:A7:A3:F6:37:DF:44:D9:40:C9:93"
       ]
