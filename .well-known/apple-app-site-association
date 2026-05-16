@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "YOUR_TEAM_ID.com.owenda63.sonosutility",
+        "appID": "5YLM8YLFB2.org.reactjs.native.example.MySonosProject",
         "paths": ["/sonosutility/callback*", "/callback*"]
       }
     ]
